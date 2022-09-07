@@ -7,7 +7,7 @@ INE5404-02208B (20222) - Programação Orientada a Objetos II
 
 - [x] WarmUp
 - [ ] Exercício 1
-- [ ] Exercício 2
+- [x] Exercício 2
 - [ ] Exercício 3
 - [ ] Exercício 4
 - [ ] Exercício 5
