@@ -15,10 +15,13 @@ com todas as informações da conta e seus respectivos clientes.
 from abc import ABC, abstractmethod
 
 
-class Conta(ABC):
-    def __init__(self, saldo_inicial: int, tipo: str):
+class Conta:
+    def __init__(self, saldo_inicial: int, tipo: str, correntista_inicial):
         self.__saldo = saldo_inicial
         self.__tipo = tipo
+        self.__limite = 0
+        self.__data_inicial = 0
+        self.__correntistas = [correntista_inicial]
 
     ## Getters
     @property
@@ -32,7 +35,25 @@ class Conta(ABC):
     ## Setters
     @tipo.setter
     def trocar_tipo_de_conta(self, novo_tipo: str):
-        self.__tipo = novo_tipo
+        if novo_tipo == "corrente":
+            self.__tipo = novo_tipo
+        elif novo_tipo == "vip":
+            if self.__saldo > 1000:
+                print("Parabéns, agora a sua conta é VIP")
+                print(f"Seu limite é de {self.__limite}")
+                self.__tipo = novo_tipo
+            else:
+                print("Infelizmente não foi possível abrir uma conta vip")
+
+        elif novo_tipo == "poupanca":
+            print("Sua conta agora é do tipo poupança")
+            print(f"Data de troca do tipo da conta: {self.__data_inicial}")
+            self.__data_inicial = 1
+            self.__tipo = novo_tipo
+
+        else:
+            print("Não foi possível trocar de conta")
+
 
     ## Métodos comuns
     def saque(self, valor: int):
@@ -52,25 +73,65 @@ class Conta(ABC):
         ## TODO
         pass
 
+    def print_correntistas(self):
+        print("Os correntista são:")
+        for correntista in self.__correntistas:
+            print(f"- {correntista}")
 
-class Corrente:
-    def __init__(self, saldo_inicial: int, tipo="corrente":
-        self.__saldo = saldo_inicial
-        self.tipo = tipo
+    def verificar_rendimento(self):
+        if self.__tipo == "poupanca":
+            if self.__data_inicial > 30:
+                self.__data_inicial -= 30
+                self.__saldo += self.__saldo * 0.001
+                print(f"Seu novo saldo é {self.__saldo}")
+
+class Correntista:
+    def __init__(self, nome: str, telefone: int):
+        self.__nome = nome
+        self.__telefone = telefone
+        self.__conta = False
 
     @property
-    def saldo(self):
-        return self.__saldo
+    def nome(self):
+        return self.__nome
 
-    def saque(self, valor: int):
-        if 
-        self.__saldo -= valor
+    @property
+    def telefone(self):
+        return self.__telefone
 
-    def deposito(self, valor: int):
-        self.__saldo += valor
+    def criar_conta(self):
+        self.__conta = Conta()
 
-class Cliente:
-    def __init__(self, nome: str, telefone: str):
-        self.nome = nome
-        self.telefone = telefone
+
+def main():
+    correntistas = []
+    while True:
+        print("1 - Cadastro de usuário")
+        for i in range(len(correntistas)):
+            print(f"{i+2} - Acessar {correntistas[i].nome}")
+
+        op = int(input())
+        if op == 1:
+            print("Insira o nome e o telefone")
+            nome = input()
+            telefone = int(input())
+            c = Correntista(nome, telefone)
+            correntistas.append(c)
+
+        elif op >= len(correntistas) + 1:
+            ## Mostra opções do correntista
+            print(f"Bem vindo {correntistas[op - 2].nome}!")
+            print("Escolha uma das opções abaixo")
+            print("0 - Sair")
+            print("Criar conta")
+
+            op2 = int(input())
+
+            if op2 == 0:
+                break
+
+
+
+
+main()
 
