@@ -66,8 +66,10 @@ class Conta:
         print(f"Saldo: {self.__saldo}")
 
     def print_info(self):
-        ## TODO
-        pass
+        print("Correntistas:")
+        print(*self.__correntistas)
+        print(f"Data de criação da conta: {self.__data_inicial}")
+        print(f"Tipo de conta: {self.__tipo}")
 
     def print_extrato(self):
         ## TODO
@@ -102,10 +104,14 @@ class Correntista:
     def criar_conta(self):
         self.__conta = Conta()
 
+    def __str__(self):
+        return self.__nome
+
 
 def main():
     correntistas = []
     while True:
+        print("Insira o valor para realizar determinada ação")
         print("1 - Cadastro de usuário")
         for i in range(len(correntistas)):
             print(f"{i+2} - Acessar {correntistas[i].nome}")
@@ -119,17 +125,41 @@ def main():
             correntistas.append(c)
 
         elif op >= len(correntistas) + 1:
-            ## Mostra opções do correntista
-            print(f"Bem vindo {correntistas[op - 2].nome}!")
-            print("Escolha uma das opções abaixo")
-            print("0 - Sair")
-            print("Criar conta")
+            while True:
+                ## Mostra opções do correntista
+                print(f"Bem vindo {correntistas[op - 2].nome}!")
+                print("Escolha uma das opções abaixo")
+                print("0 - Sair")
+                print("1 - Criar conta")
+                print("2 - Ver saldo")
+                print("3 - Fazer saque")
+                print("4 - Depositar")
+                print("5 - Ver informações da conta")
 
-            op2 = int(input())
+                op2 = int(input())
 
-            if op2 == 0:
-                break
+                if op2 == 0:
+                    break
+                elif op2 == 1:
+                    print("Para criar uma conta siga as instruções:")
+                    print("Insira o saldo inicial")
+                    saldo_inicial = int(input())
+                    print("Insira o tipo de conta \(corrente, vip, poupanca\):")
+                    tipo_de_conta = input()
 
+                    conta = Conta(saldo_inicial, tipo_de_conta, correntistas[op - 2])
+
+                elif op2 == 2:
+                    conta.print_saldo()
+
+                elif op2 == 3:
+                    conta.saque(int(input("Digite valor a sacar:")))
+
+                elif op2 == 4:
+                    conta.deposito(int(input("Digite valor a depositar:")))
+
+                elif op2 == 5:
+                    conta.print_info()
 
 
 
