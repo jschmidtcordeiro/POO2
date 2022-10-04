@@ -9,8 +9,8 @@ INE5404-02208B (20222) - Programação Orientada a Objetos II
 - [x] VPL 2 - Associação, Agregação e Composição
 - [x] VPL 3 - Herança e Classes Abstratas
 - [x] VPL 4 - Controle de Chamados
-- [ ] VPL 5 - Jogo de Cartas
-- [ ] VPL 6 - Controle do Elevador
+- [x] VPL 5 - Jogo de Cartas
+- [x] VPL 6 - Controle do Elevador
 
 ## Lista 01
 
@@ -60,12 +60,3 @@ INE5404-02208B (20222) - Programação Orientada a Objetos II
 - [ ] Exercício 6
 - [ ] Exercício 7
 - [ ] Exercício 8
-
-## VPL
-
-- [x] VPL 1
-- [x] VPL 2
-- [x] VPL 3
-- [x] VPL 4
-- [x] VPL 5
-- [x] VPL 6
