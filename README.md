@@ -67,5 +67,5 @@ INE5404-02208B (20222) - Programação Orientada a Objetos II
 - [x] VPL 2
 - [x] VPL 3
 - [x] VPL 4
-- [ ] VPL 5
+- [x] VPL 5
 - [ ] VPL 6
