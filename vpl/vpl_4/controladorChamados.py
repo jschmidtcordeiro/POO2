@@ -63,6 +63,13 @@ class ControladorChamados(AbstractControladorChamados):
         if not isinstance(tipo, TipoChamado):
             return
 
+        for it_chamado in self.__lista_chamados:
+            if (it_chamado.data == data and
+                it_chamado.cliente == cliente and
+                it_chamado.tecnico == tecnico and
+                it_chamado.tipo == tipo):
+                return chamado
+        
         chamado = Chamado(data, cliente, tecnico, titulo, descricao, prioridade, tipo)
         self.__lista_chamados.append(chamado)
 
